@@ -4,7 +4,6 @@ export default class ComponentWatcher {
     this.states = opts.states
     this.data = {...this.component.state}
     this.tasks = []
-    // this.setData()
   }
 
   setData() {
@@ -21,7 +20,6 @@ export default class ComponentWatcher {
   updateWatch() {
       Object.defineProperty(this.component, 'state', {
         get: () => {
-          console.log('是从watcher类get的+++++++', this.data)
           return this.data
         },
         set: val => {
@@ -34,7 +32,6 @@ export default class ComponentWatcher {
               })
             }
           })
-          console.log('在watch类进行了set--------', val)
           this.data = {...val}
         }
       })
